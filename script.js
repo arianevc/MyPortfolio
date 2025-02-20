@@ -43,3 +43,13 @@ document.getElementById("contactForm").addEventListener("submit", function(event
         // You can add form submission logic here (e.g., sending data to backend)
     }
 });
+
+function sendMail()
+{
+    let parms={
+        email: document.getElementById("email").value,
+        subject: document.getElementById("subject").value,
+        message: document.getElementById("message").value
+    }
+    emailjs.send("service_47xtp4r","template_xm1qt1n",parms).then(alert("Email Sent!!!"))
+}
