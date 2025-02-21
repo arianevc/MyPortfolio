@@ -35,7 +35,8 @@ document.getElementById("contactForm").addEventListener("submit", function(event
     }
 
     if (isValid) {
-        alert("Form submitted successfully!");
+
+        sendMail();
         document.getElementById("email").value=""
         document.getElementById("subject").value=""
         document.getElementById("message").value=""
@@ -51,5 +52,12 @@ function sendMail()
         subject: document.getElementById("subject").value,
         message: document.getElementById("message").value
     }
-    emailjs.send("service_47xtp4r","template_xm1qt1n",parms).then(alert("Email Sent!!!"))
+    emailjs.send("service_47xtp4r","template_xm1qt1n",parms)
+    .then(() => {
+        alert("Email Sent!!!");
+    })
+    .catch((error) => {
+        console.error("Email sending failed:", error);
+        alert("Failed to send email. Please try again.");
+    });
 }
